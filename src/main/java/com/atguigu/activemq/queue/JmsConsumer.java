@@ -31,16 +31,28 @@ public class JmsConsumer {
 //        connection.close();
         //消息监听
         consumer.setMessageListener(new MessageListener() {
+
             @Override
             public void onMessage(Message message) {
                 if (null != message && message instanceof TextMessage) {
                     TextMessage textMessage = (TextMessage) message;
                     try {
-                        System.out.println(textMessage.getText());
+                        System.out.println("*****消费者接收到消息 ：" + textMessage.getText());
+                        System.out.println("*****消费者接收到消息属性 ：" + textMessage.getStringProperty("c01"));
                     } catch (JMSException e) {
                         e.printStackTrace();
                     }
                 }
+                if (null != message && message instanceof MapMessage) {
+                    MapMessage mapMessage = (MapMessage) message;
+                    try {
+                        System.out.println("*****消费者接收到消息 ：" + mapMessage.getString("k1"));
+                    } catch (JMSException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
             }
         });
         System.in.read();

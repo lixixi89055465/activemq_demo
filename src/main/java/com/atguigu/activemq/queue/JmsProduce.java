@@ -25,9 +25,13 @@ public class JmsProduce {
         //6. 通过使用messageProducer成产3条消息发送到MQ的队列里面
         for (int i = 0; i < 6; i++) {
             //7. 创建消息，好比学生按照阳哥的要修写好的面试题消息 。
-            TextMessage textMessage = session.createTextMessage("Msg ---" + i);//理解为一个字符串
+            TextMessage textMessage = session.createTextMessage("text---Msg ---" + i);//理解为一个字符串
+            textMessage.setStringProperty("c01", "vip");
             //8. 通过messageProducer发送给mq
             messageProducer.send(textMessage);
+            MapMessage mapMessage = session.createMapMessage();
+            mapMessage.setString("k1", "mapMessage v1");
+            messageProducer.send(mapMessage);
         }
         messageProducer.close();
         session.close();

@@ -3,6 +3,7 @@ package com.atguigu.activemq.queue;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.util.HashSet;
 
 public class JmsProduce_topic {
     public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
@@ -34,6 +35,6 @@ public class JmsProduce_topic {
         session.close();
         connection.close();
         System.out.println("********TOPIC_NAME 消息发送到MQ完成");
-
+        HashSet<String> a=new HashSet<>();
     }
 }
