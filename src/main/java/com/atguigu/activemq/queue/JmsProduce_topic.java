@@ -4,9 +4,9 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class JmsProduce {
+public class JmsProduce_topic {
     public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
-    public static final String QUEUE_NAME = "queue01";
+    public static final String TOPIC_NAME = "topic-atguigu";
 
     public static void main(String[] args) throws JMSException {
         //1.创建链接工厂,按照给定的url地址，采用默认的用户名和秘密
@@ -19,20 +19,21 @@ public class JmsProduce {
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         //4.创建目的地（具体是队列还是主题 topic)
         //Collection collection=new ArrayList();
-        Queue queue = session.createQueue(QUEUE_NAME);
+//        Queue queue = session.createQueue(TOPIC_NAME);
+        Topic topic = session.createTopic(TOPIC_NAME);
         //5. 创建消息的生产者
-        MessageProducer messageProducer = session.createProducer(queue);
+        MessageProducer messageProducer = session.createProducer(topic);
         //6. 通过使用messageProducer成产3条消息发送到MQ的队列里面
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) {
             //7. 创建消息，好比学生按照阳哥的要修写好的面试题消息 。
-            TextMessage textMessage = session.createTextMessage("Msg ---" + i);//理解为一个字符串
+            TextMessage textMessage = session.createTextMessage("Topic _ name---" + i);//理解为一个字符串
             //8. 通过messageProducer发送给mq
             messageProducer.send(textMessage);
         }
         messageProducer.close();
         session.close();
         connection.close();
-        System.out.println("********消息发送到mq完成 ");
+        System.out.println("********TOPIC_NAME 消息发送到MQ完成");
 
     }
 }
