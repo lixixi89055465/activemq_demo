@@ -26,7 +26,7 @@ public class JmsProduce {
 //        messageProducer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
         messageProducer.setDeliveryMode(DeliveryMode.PERSISTENT);
         //6. 通过使用messageProducer成产3条消息发送到MQ的队列里面
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) {
             //7. 创建消息，好比学生按照阳哥的要修写好的面试题消息 。
             TextMessage textMessage = session.createTextMessage("text---Msg ---" + i);//理解为一个字符串
             textMessage.setStringProperty("c01", "vip");
