@@ -10,7 +10,7 @@ public class JmsConsumer_Topic_persist1 {
     public static final String TOPIC_NAME = "topic-persist";
 
     public static void main(String[] args) throws JMSException, IOException {
-        System.out.println("**********z3");
+        System.out.println("**********z4");
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
         Connection connection = activeMQConnectionFactory.createConnection();
         connection.setClientID("z4");
