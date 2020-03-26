@@ -11,7 +11,7 @@
     <groupId>com.atguigu.boot.activemq</groupId>
     <artifactId>boot_mq_consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>boot_mq_consumer</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
